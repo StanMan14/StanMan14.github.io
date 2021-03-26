@@ -50,8 +50,7 @@ p , .footer {
     bottom: 0%;
 	left: 45%;	
     position: fixed;
-	
-	background: -webkit-linear-gradient(red, #222);
+	color: white;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-align: center;
@@ -69,3 +68,11 @@ img:hover {
 	color: white;
 	text-align: left;
 }
+.rotate90 {  
+-webkit-transform:rotate(90deg);  
+-moz-transform: rotate(90deg);  
+-ms-transform: rotate(90deg);  
+-o-transform: rotate(90deg);  
+transform: rotate(90deg);  
+}  
+
