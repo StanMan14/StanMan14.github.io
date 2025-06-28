@@ -128,32 +128,39 @@
 .section .text {
   flex: 1 1 55%;
 }
+.menu-icon {
+  font-size: 28px;
+  color: gold;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+}
 
-@media (max-width: 768px) {
-      .menu-icon {
-        display: block;
-      }
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show ☰ on small screens */
+  }
 
-      .navbar ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: black;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        border: 2px solid gold;
-        border-radius: 8px;
-      }
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border: 2px solid gold;
+    border-radius: 8px;
+    z-index: 999;
+  }
 
-      .navbar ul.active {
-        display: flex;
-      }
+  .navbar ul.active {
+    display: flex;
+  }
 
-      .navbar li {
-        text-align: center;
-        margin: 10px 0;
-      }
+  .navbar li {
+    margin: 10px 0;
+    text-align: center;
+  }
 
   .section {
     flex-direction: column;

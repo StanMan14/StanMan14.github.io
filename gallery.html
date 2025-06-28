@@ -189,37 +189,46 @@
       margin: 5px 0;
     }
 
-    @media screen and (max-width: 768px) {
-      .menu-icon {
-        display: block;
-      }
+.menu-icon {
+  font-size: 28px;
+  color: gold;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+}
 
-      .navbar ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: black;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        border: 2px solid gold;
-        border-radius: 8px;
-      }
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show ☰ on small screens */
+  }
 
-      .navbar ul.active {
-        display: flex;
-      }
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border: 2px solid gold;
+    border-radius: 8px;
+    z-index: 999;
+  }
 
-      .navbar li {
-        text-align: center;
-        margin: 10px 0;
-      }
+  .navbar ul.active {
+    display: flex;
+  }
+
+  .navbar li {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
 
       .controls button {
         padding: 8px 14px;
         font-size: 14px;
       }
-    }
+    
   </style>
 </head>
 <body>
@@ -266,6 +275,9 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+            function toggleMenu() {
+            document.getElementById("menu").classList.toggle("active");
+        }
 
     let slideIndex = 0;
     const slides = document.querySelectorAll('.slide');
