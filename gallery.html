@@ -190,6 +190,10 @@
     }
 
     @media screen and (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
       .nav-button {
         font-size: 18px;
         padding: 6px 10px;
@@ -210,7 +214,8 @@
 
   <nav class="navbar">
     <div class="logo">SRArtistry_za</div>
-    <ul>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul id="menu">
       <li><button><a href="index.html">Home</a></button></li>
       <li><button><a href="gallery.html">Gallery</a></button></li>
       <li><button><a href="about.html">About</a></button></li>

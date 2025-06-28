@@ -130,6 +130,10 @@
 }
 
 @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
   .section {
     flex-direction: column;
   }
@@ -170,12 +174,14 @@ img {
 
   <nav class="navbar">
     <div class="logo">SRArtistry_za</div>
-    <ul>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul id="menu">
       <li><button><a href="index.html">Home</a></button></li>
       <li><button><a href="gallery.html">Gallery</a></button></li>
       <li><button><a href="about.html">About</a></button></li>
     </ul>
   </nav>
+
   <div class="stars"></div>
 
   <div class="container">
