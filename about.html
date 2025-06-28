@@ -1,98 +1,280 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>
-    Home
-    </title>
-	<script src="script.js"></script>
-    <link rel="stylesheet" style="text/css" href="style1.css">
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | SRArtistry</title>
+  <link rel="icon" type="image/x-icon" href="icon.png" />
+  <style>
+    html, body {
+      background-color: black;
+      color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      cursor: url(https://cur.cursors-4u.net/cursors/cur-2/cur221.cur), auto !important;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: black;
+      border: 3px solid gold;
+      border-radius: 10px;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: gold;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar li {
+      margin: 0 10px;
+    }
+
+    .navbar button {
+      background-color: transparent;
+      border: 2px solid gold;
+      border-radius: 8px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar button a {
+      text-decoration: none;
+      color: gold;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .navbar button:hover {
+      background-color: gold;
+      transform: scale(1.1);
+    }
+
+    .navbar button:hover a {
+      color: black;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 2px solid gold;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(3px);
+    }
+
+    h1 {
+      color: gold;
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .footer {
+      background-color: black;
+      border-top: 2px solid gold;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .footer p {
+    background-color: black;
+      color: gold;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.section img {
+  flex: 1 1 40%;
+  border-radius: 20px;
+  max-width: 40%;
+  height: auto;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.section .text {
+  flex: 1 1 55%;
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+  }
+}
+
+img {
+        border-radius:20%;
+        width: 50%;
+    }
+    
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background-color: gold;
+      border-radius: 50%;
+      opacity: 0;
+      animation: blink infinite alternate ease-in-out;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.1; }
+      50% { opacity: 1; }
+      100% { opacity: 0.1; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="zone black">
-        <ul class="main-nav">
-            <li>
-			<h1>
-                Stanley's Stories
-				</h1>
-            </li>
-            <li class="push">
-		<div id="dropdown">
-  <button onclick="myFunction()" class="dropbtn">=</button>
-  </li>
-  <li>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="index.html">Home</a>
-    <a href="content.html">Content</a>
-    <a href="about.html">About</a>
-<a href="mailto:artsystanman14@gmail.com">Contact</a>
-         </div>
+
+  <nav class="navbar">
+    <div class="logo">SRArtistry_za</div>
+    <ul>
+      <li><button><a href="index.html">Home</a></button></li>
+      <li><button><a href="gallery.html">Gallery</a></button></li>
+      <li><button><a href="about.html">About</a></button></li>
+    </ul>
+  </nav>
+  <div class="stars"></div>
+
+  <div class="container">
+    <h1>About the founder:</h1>
+  
+    <div class="section">
+      <img src="images/founder.jpg" alt="Graphite drawing of Stanley Makhuza on A3 paper">
+      <div class="text">
+        <p>As Head Boy of Eden Christian School in 2023, he balanced leadership duties with a growing passion for visual art, earning schoolwide recognition for both his talent and his commitment to community creativity.</p>
       </div>
-	  </li>
-				<div class="hidden2">
-               <li>
-			   <a href="index.html">
-Home
-                 </a>   
-            </li>
-            <li>
-                <a href="content.html">
-Content
-                 </a>   
-            </li>
-            <li>
-                <a href="about.html">
-About
-                 </a>   
-            </li>
-            <li>
-<a href="mailto:artsystanman14@gmail.com">Contact</a>
-            </li>
-			</div>
-        </ul>
-</div>
-    </nav>
-		 <div id="page-container">
-   <div id="content-wrap">
-	<div id="center">
-	<div class="zone">
-	<div class="white">
-	<h1>
-	Management
-	</h1>
-<p> The Owner and Founder of this website and the contents inside is Stanley Makhuza. </p>
-	<h1>
-	Purpose
-	</h1>
-<p>This website is for people to enjoy and 'optional' purchase whatever they may like. </p>
-<h1>
-Rules, Regulations and Disclaimers
-</h1>
-<p>Under no circumstance will the creator accept any piracy of his content without his permission.</p>
-<p> Meanwhile the creator will accept any kind of criticism, be advised that he will in no way tolerate any kind of slander againgst him on this site.</p>
-<p>If there is any way for the owner to improve on his website or content or you would like to use his content for a valid reason, then please get into contact with him from the contact page. </p>
-<p>The owner of this site is only responsible for the design on the product and the account on his behalf. Under no circumstances will the site "Stanley's Stories" and the owner be held responsibleor liable in any way for claims ,damages, losses, expences, costs or liabilites whatsoever from your use of this website or any website linked to it or from your reliance on the contents of this site.</p>
-<p>This website is no way intended to offend any viewer.</p>
-<p>The contents of the website (Comics etc) were created by the owner of the website. </p>
-<p>The only places that involve "Stanley's Stories" that the owner will acknowledge are this site and his social media accounts which are also in the site otherwise any other sources will be considered fake to avoid any fraudulent activities.</p>
-<p>The site may contain links to other websites or content belonging to third parties or links to websites and features in banners or other advertising. Such external links are not investigated, monitored or checked for accuracy, adequacy, validity, reliability, availability or completeness by us.</p>
-	<p>Otherwise relax, do the right thing and enjoy the site though your opinion will be respected.</p>
-	</div>
-	</div>
-	</div>
-	</div>
-	<footer>
-        <marquee direction="right">
-		*Note* a new website will be coming out soon...
-		</marquee>
-		<br>
-		Follow on:
-        <br>
-      <a href="https://www.youtube.com/channel/UCxCTHqHunlz9LJQzz9KUyaQ"> <img src="images/icon/youtube.png" width="24px" height="24px"> </a>  
-      <a href="https://twitter.com/thee_stan_man14"> <img src="images/icon/twitter.png" width="24px" height="24px"> </a>  
-      <a href="https://www.instagram.com/thee_stanman_14/"> <img src="images/icon/instagram.png" width="24px" height="24px"> </a>  
-        <br>
-        2021
-		</footer>
-		</div>
+    </div>
+  
+    <br/>
+    <hr color="gold" width="80%">
+    <br/>
+
+    <div class="section">
+        <div class="text">
+            <p>In late 2023, Stanley entered Die Pos’s inaugural <em>“Die Pos Palet: van pen tot kwas”</em> art competition, submitting one of 185 entries from learners across Bela-Bela, Mokopane and beyond. His mixed-media piece—executed in both ink pen and brush—clinched the overall trophy, marking him as the competition’s standout artist.</p>
+            <p>Odette Graskie, the Johannesburg-based judge and MA graduate in visual arts, praised his work for “very expressive mark-making,” a “brilliant interpretation of the theme,” and “technique with different textures and patterns.”</p>
+          </div>
+      <img src="images/winningart.jpg" alt="Winning art on Die Pos Palet">
+    </div>
+  
+    <br/>
+    <hr color="gold" width="80%">
+    <br/>
+
+        <center><img src="images/teahcers.jpg" alt="Teachers of Eden Christian School" width="50%"></center>
+        <p>Beyond the competition circuit, Stanley’s portfolio extends to portraiture and environmental art. In a special end-of-year project, he drew self-portraits of each of his teachers—a series described by the school as showcasing “unbelievable technique and talent.”</p>
+        <p>His meticulous line-work captures personality and mood, while subtle brush accents bring warmth to each image.</p>
+        <p>Inside the halls of Eden Christian School, blank notice boards become canvases under Stanley’s hand. He routinely adorns them with hand-lettered inspirational quotes surrounded by intricate illustrations—flowers, geometric patterns and miniature scenes—that turn corridors into daily galleries of motivation.</p>
+        <p>True to the competition’s “pen to brush” challenge, Stanley fluidly shifts between fine-line ink work and expressive paint strokes. Cross-hatching, stippling and bold swaths of color converge to form rich textures and dynamic compositions—whether he’s composing figurative portraits or exploring abstract shapes.</p>
+        <p>His work reveals an eye for balance and thematic depth, continually evolving to inspire his community and peers alike.</p>
+  </div>
+  
+
+  <div style="max-width: 900px; margin: 20px auto; padding: 15px; background-color: rgba(0, 0, 0, 0.3); border: 1px solid gold; border-radius: 10px; color: white; font-size: 14px;">
+    <h3 style="color: gold;">References & Mentions</h3>
+    <ul style="list-style-type: none; padding-left: 0;">
+      <li><strong>Die Pos Palet: van pen tot kwas</strong> – Regional youth art competition hosted by Die Pos newspaper (2023) - <a href="https://www.citizen.co.za/die-pos/news-headlines/local-news/2023/11/06/kreatiewe-leerders-spog-met-hul-talent/">Click here for the website</a></li>
+      <br/>
+      <li><strong>Judge's Notes</strong> – Feedback provided by Odette Graskie, international exhibiting artist and MA graduate in Visual Arts - <a href="https://odettegraskie.com/">Click here for the website</a></li></li>
+      <br/>
+      <li><strong>Eden Christian School</strong> – Source of accolades, exhibitions, and teacher testimonials from internal school publications (2023) - <a href="https://www.edenschool.co.za/">Click here for the website</a></li></li>
+    </ul>
+  </div>
+  
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> SRArtistry. All Rights Reserved.</p>
+    <p>
+      <a href="https://instagram.com/srartistry_za" target="_blank" style="color: gold; text-decoration: none;">
+        Follow on Instagram
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("active");
+        }
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        function createStars(count) {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < count; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        document.addEventListener('mousemove', e => {
+  const trail = document.createElement('div');
+  trail.style.position = 'fixed';
+  trail.style.width = '6px';
+  trail.style.height = '6px';
+  trail.style.backgroundColor = 'gold';
+  trail.style.borderRadius = '50%';
+  trail.style.top = e.clientY + 'px';
+  trail.style.left = e.clientX + 'px';
+  trail.style.pointerEvents = 'none';
+  trail.style.opacity = 1;
+  trail.style.transition = 'opacity 0.4s ease-out';
+  document.body.appendChild(trail);
+  setTimeout(() => {
+      trail.style.opacity = 0;
+      setTimeout(() => trail.remove(), 400);
+  }, 10);
+});
+        createStars(100);
+
+  </script>
 </body>
 </html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Showcase | SRArtistry</title>
+  <link rel="icon" type="image/x-icon" href="icon.png" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      cursor: url(https://cur.cursors-4u.net/cursors/cur-2/cur221.cur), auto !important;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: black;
+      border-bottom: 2px solid gold;
+      padding: 15px 20px;
+      z-index: 100;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: gold;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar li {
+      margin: 0 10px;
+    }
+
+    .navbar button {
+      background-color: transparent;
+      border: 2px solid gold;
+      border-radius: 8px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar button a {
+      text-decoration: none;
+      color: gold;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .navbar button:hover {
+      background-color: gold;
+      transform: scale(1.1);
+    }
+
+    .navbar button:hover a {
+      color: black;
+    }
+
+    /* Stars */
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background-color: gold;
+      border-radius: 50%;
+      opacity: 0;
+      animation: blink infinite alternate ease-in-out;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.1; }
+      50% { opacity: 1; }
+      100% { opacity: 0.1; }
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Slideshow */
+    .slideshow-container {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .slide {
+      display: none;
+      max-height: 80vh;
+      width: auto;
+      max-width: 90%;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .active {
+      display: block;
+      animation: fade 1.2s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid gold;
+      color: gold;
+      font-size: 24px;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 2;
+      user-select: none;
+    }
+
+    .nav-button:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    .prev { left: 20px; }
+    .next { right: 20px; }
+
+    .controls {
+  text-align: center;
+  padding: 15px 0 25px;
+}
+
+.controls button {
+  background-color: transparent;
+  color: gold;
+  border: 2px solid gold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.controls button:hover {
+  background-color: gold;
+  color: black;
+}
+
+    footer {
+      background-color: black;
+      border-top: 2px solid gold;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 2;
+    }
+
+    footer p {
+      color: gold;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-button {
+        font-size: 18px;
+        padding: 6px 10px;
+      }
+
+      .navbar button a {
+        font-size: 16px;
+      }
+
+      .controls button {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">SRArtistry_za</div>
+    <ul>
+      <li><button><a href="index.html">Home</a></button></li>
+      <li><button><a href="gallery.html">Gallery</a></button></li>
+      <li><button><a href="about.html">About</a></button></li>
+    </ul>
+  </nav>
+
+  <div class="stars"></div>
+
+  <div class="slideshow-container">
+    <img src="gallery/gallery1.jpg" class="slide active" alt="Slide 1" />
+    <img src="gallery/gallery2.jpg" class="slide" alt="Slide 2" />
+    <img src="gallery/gallery3.jpg" class="slide" alt="Slide 3" />
+    <img src="gallery/gallery4.jpg" class="slide" alt="Slide 4" />
+    <img src="gallery/gallery5.jpg" class="slide" alt="Slide 5" />
+    <img src="gallery/gallery6.jpg" class="slide" alt="Slide 6" />
+    <img src="gallery/gallery7.jpg" class="slide" alt="Slide 7" />
+    <img src="gallery/gallery8.jpg" class="slide" alt="Slide 8" />
+
+    <div class="nav-button prev" onclick="changeSlide(-1)">&#10094;</div>
+    <div class="nav-button next" onclick="changeSlide(1)">&#10095;</div>
+</div>
+    <div class="controls">
+      <button onclick="pauseSlideshow()">Pause</button>
+      <button onclick="resumeSlideshow()">Resume</button>
+    </div>
+
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> SRArtistry. All Rights Reserved.</p>
+    <p>
+      <a href="https://instagram.com/srartistry_za" target="_blank" style="color: gold; text-decoration: none;">
+        Follow on Instagram
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    let interval = setInterval(showNextSlide, 4000);
+    let isPaused = false;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+
+    function showNextSlide() {
+      if (!isPaused) {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+      }
+    }
+
+    function changeSlide(n) {
+      slideIndex = (slideIndex + n + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function pauseSlideshow() {
+      isPaused = true;
+    }
+
+    function resumeSlideshow() {
+      isPaused = false;
+    }
+
+    function createStars(count) {
+      const starsContainer = document.querySelector('.stars');
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        starsContainer.appendChild(star);
+      }
+    }
+
+    createStars(100);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter of thanks | SRArtistry</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+
+    <style>
+        /* General Styles */
+/* General Styles */
+html, body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden; /* prevent horizontal scroll but allow vertical */
+}
+
+body {
+cursor: url(https://cur.cursors-4u.net/cursors/cur-2/cur221.cur), auto !important;}
+
+
+        /* Starry Background */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: gold;
+            border-radius: 50%;
+            opacity: 0;
+            animation: blink infinite alternate ease-in-out;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.1; }
+            50% { opacity: 1; }
+            100% { opacity: 0.1; }
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: black;
+            border: 3px solid gold;
+            border-radius: 10px;
+            padding: 15px 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: gold;
+        }
+
+        .menu-icon {
+            font-size: 28px;
+            color: gold;
+            cursor: pointer;
+            display: none;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            margin: 0 10px;
+        }
+
+        .navbar button {
+            background-color: transparent;
+            border: 2px solid gold;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar button a {
+            text-decoration: none;
+            color: gold;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .navbar button:hover {
+            background-color: gold;
+            transform: scale(1.1);
+        }
+
+        .navbar button:hover a {
+            color: black;
+        }
+
+        .navbar button:active {
+            transform: scale(0.9);
+            background-color: rgba(255, 215, 0, 0.8);
+        }
+
+        /* Footer Styling */
+        .footer {
+    background-color: black;
+    border-top: 2px solid gold;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 2;
+}
+
+
+        .footer p {
+            color: gold;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: black;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                border: 2px solid gold;
+                border-radius: 8px;
+            }
+
+            .navbar ul.active {
+                display: flex;
+            }
+
+            .navbar li {
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+        .message-box {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid gold;
+    border-radius: 20px;
+    color: white;
+    text-align: left;
+    z-index: 2;
+    position: relative;
+    backdrop-filter: blur(3px);
+}
+
+.message-box h2 {
+    color: gold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.message-box a {
+    color: gold;
+    text-decoration: none;
+}
+
+.message-box a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <nav class="navbar">
+        <div class="logo">SRArtistry_za</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul id="menu">
+            <li><button><a href="index.html">Home</a></button></li>
+            <li><button><a href="gallery.html">Gallery</a></button></li>
+            <li><button><a href="about.html">About</a></button></li>
+        </ul>
+    </nav>
+
+    <div class="message-box">
+        <h2>From the award winner of Die Pos Palet 2023 Art Competition<br><small>185 students from several schools</small></h2>
+        <p>Dear customer,</p>
+        <p>Thank you for your purchase and for supporting authentic, quality artwork. I am thrilled that my artwork has found a new home with you!</p>
+        <p>As part of my commitment to ensuring the authenticity of my pieces, the QR code you scanned has directed you to my official website, serving as proof that your artwork is legitimate and fully authenticated.</p>
+        <p>I hope that this piece brings you inspiration and joy, and I appreciate your trust in my work. Should you have any questions or need further information, feel free to reach out.</p>
+        <p>Once again, thank you for being a valued supporter of authentic artistry.</p>
+        <p><strong>Best regards</strong><br>
+        Stanley Makhuza<br>
+        +27 78 561 1424<br>
+        <a href="mailto:artsystanman14@gmail.com">artsystanman14@gmail.com</a></p>
+    </div>
+    
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> SRArtistry. All Rights Reserved.</p>
+        <p>
+          <a href="https://instagram.com/srartistry_za" target="_blank" style="color: gold; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gold" viewBox="0 0 24 24">
+              <path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41a4.93 4.93 0 0 1 1.76 1.02c.507.507.83 1.08 1.02 1.76.17.46.353 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43a4.91 4.91 0 0 1-1.02 1.76 4.91 4.91 0 0 1-1.76 1.02c-.46.17-1.26.353-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41a4.89 4.89 0 0 1-1.76-1.02 4.89 4.89 0 0 1-1.02-1.76c-.17-.46-.353-1.26-.41-2.43C2.212 15.584 2.2 15.2 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43a4.89 4.89 0 0 1 1.02-1.76 4.89 4.89 0 0 1 1.76-1.02c.46-.17 1.26-.353 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0 1.8c-3.16 0-3.52.012-4.76.07-1.03.05-1.59.218-1.96.363-.49.19-.84.418-1.21.79a3.08 3.08 0 0 0-.79 1.21c-.145.37-.313.93-.363 1.96-.058 1.24-.07 1.6-.07 4.76s.012 3.52.07 4.76c.05 1.03.218 1.59.363 1.96.19.49.418.84.79 1.21.37.372.72.6 1.21.79.37.145.93.313 1.96.363 1.24.058 1.6.07 4.76.07s3.52-.012 4.76-.07c1.03-.05 1.59-.218 1.96-.363.49-.19.84-.418 1.21-.79.372-.37.6-.72.79-1.21.145-.37.313-.93.363-1.96.058-1.24.07-1.6.07-4.76s-.012-3.52-.07-4.76c-.05-1.03-.218-1.59-.363-1.96a3.01 3.01 0 0 0-.79-1.21 3.01 3.01 0 0 0-1.21-.79c-.37-.145-.93-.313-1.96-.363-1.24-.058-1.6-.07-4.76-.07zm0 3.8a6.2 6.2 0 1 1 0 12.4 6.2 6.2 0 0 1 0-12.4zm0 1.8a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8zm5.6-2.64a1.44 1.44 0 1 1 0 2.88 1.44 1.44 0 0 1 0-2.88z"/>
+            </svg>
+            Follow us on Instagram
+          </a>
+        </p>
+      </footer>
+      
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("active");
+        }
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        function createStars(count) {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < count; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars(100);
+    </script>
+</body>
+</html>

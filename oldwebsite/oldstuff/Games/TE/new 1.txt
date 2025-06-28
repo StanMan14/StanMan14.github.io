@@ -1,0 +1,16 @@
+<html>
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style> 
+body { 
+background-color: black;
+color: white;
+} 
+</style> 
+</head> 
+<body>
+<center>
+The moment you see the stitches on the guy's abdomen, as Derick rips it open, you take out the brake, install it onto the motor system and stop the machine. Naomi tries to stop the bleeding
+</center>
+</body>
+</html>
