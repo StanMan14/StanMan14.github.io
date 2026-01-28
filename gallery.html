@@ -229,6 +229,19 @@
         font-size: 14px;
       }
     
+.progress-bar {
+  width: 80%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: gold;
+  transition: width 4s linear;
+}
+
   </style>
 </head>
 <body>
@@ -254,6 +267,14 @@
     <img src="gallery/gallery6.jpg" class="slide" alt="Slide 6" />
     <img src="gallery/gallery7.jpg" class="slide" alt="Slide 7" />
     <img src="gallery/gallery8.jpg" class="slide" alt="Slide 8" />
+    <img src="gallery/gallery9.jpeg" class="slide" alt="Slide 9" />
+    <img src="gallery/gallery10.jpeg" class="slide" alt="Slide 10" />
+    <img src="gallery/gallery11.jpeg" class="slide" alt="Slide 11" />
+    <img src="gallery/gallery12.jpeg" class="slide" alt="Slide 12" />
+    <img src="gallery/gallery13.jpg" class="slide" alt="Slide 13" />
+    <img src="gallery/gallery14.jpg" class="slide" alt="Slide 14" />
+    <img src="gallery/gallery15.jpg" class="slide" alt="Slide 15" />
+  </br>
 
     <div class="nav-button prev" onclick="changeSlide(-1)">&#10094;</div>
     <div class="nav-button next" onclick="changeSlide(1)">&#10095;</div>
@@ -263,7 +284,13 @@
       <button onclick="resumeSlideshow()">Resume</button>
     </div>
 
-
+<center> <div class="progress-bar">
+  <div class="progress"></div>
+</div> </center>
+</br>
+</br>
+</br>
+</br>
   <footer class="footer">
     <p>&copy; <span id="year"></span> SRArtistry. All Rights Reserved.</p>
     <p>
@@ -273,56 +300,74 @@
     </p>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-            function toggleMenu() {
-            document.getElementById("menu").classList.toggle("active");
-        }
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    let slideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    let interval = setInterval(showNextSlide, 4000);
-    let isPaused = false;
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+  }
 
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove('active'));
-      slides[index].classList.add('active');
-    }
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.querySelector('.progress');
+  let isPaused = false;
+  let interval = setInterval(showNextSlide, 4000);
 
-    function showNextSlide() {
-      if (!isPaused) {
-        slideIndex = (slideIndex + 1) % slides.length;
-        showSlide(slideIndex);
-      }
-    }
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+    resetProgressBar();
+  }
 
-    function changeSlide(n) {
-      slideIndex = (slideIndex + n + slides.length) % slides.length;
+  function showNextSlide() {
+    if (!isPaused) {
+      slideIndex = (slideIndex + 1) % slides.length;
       showSlide(slideIndex);
     }
+  }
 
-    function pauseSlideshow() {
-      isPaused = true;
+  function changeSlide(n) {
+    slideIndex = (slideIndex + n + slides.length) % slides.length;
+    showSlide(slideIndex);
+  }
+
+  function pauseSlideshow() {
+    isPaused = true;
+    progress.style.transition = "none";
+  }
+
+  function resumeSlideshow() {
+    isPaused = false;
+    resetProgressBar();
+  }
+
+  function resetProgressBar() {
+    progress.style.transition = "none";
+    progress.style.width = "0%";
+    setTimeout(() => {
+      progress.style.transition = "width 4s linear";
+      progress.style.width = "100%";
+    }, 50);
+  }
+
+  function createStars(count) {
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      starsContainer.appendChild(star);
     }
+  }
 
-    function resumeSlideshow() {
-      isPaused = false;
-    }
+  createStars(100);
 
-    function createStars(count) {
-      const starsContainer = document.querySelector('.stars');
-      for (let i = 0; i < count; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        starsContainer.appendChild(star);
-      }
-    }
+  // Start slideshow
+  showSlide(slideIndex);
+</script>
 
-    createStars(100);
-  </script>
 
 </body>
 </html>
