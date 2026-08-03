@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VacanClass - Global School Vacancy Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="style.css">
+    <link id="appFavicon" rel="icon" type="image/png" href="DayLogo.png">
+</head>
+<body class="light-theme">
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="logo-container">
+            <img id="headerLogoImg" src="DayLogo.png" alt="VacanClass Logo" class="brand-logo-img">
+            <span class="logo-text">VacanClass</span>
+        </div>
+
+        <div class="header-controls">
+            <button id="premiumParentBtn" class="btn premium-btn">⭐ Parent Alerts</button>
+            <button id="premiumSchoolBtn" class="btn school-tier-btn">🏫 School Boost</button>
+            
+            <div id="google_translate_element" class="translate-box"></div>
+
+            <button id="themeToggle" class="btn theme-toggle-btn" title="Toggle Theme">🌓</button>
+            <a href="institution.html" id="portalLink" class="btn institution-btn">Portal Login</a>
+        </div>
+    </header>
+
+    <!-- Saved Location Banner -->
+    <div id="savedLocationBar" class="saved-location-bar hidden">
+        <span>📍 Saved Location: <b id="savedAddressLabel">None</b></span>
+        <button id="clearSavedLocBtn" class="btn-text-sm">Clear</button>
+    </div>
+
+    <!-- Main Workspace Container -->
+    <main class="main-container">
+        
+        <!-- Left Sidebar: Search & Filters -->
+        <aside id="sidebarLeft" class="sidebar left-sidebar mobile-view-panel">
+            <div class="search-section">
+                <div class="section-title-row">
+                    <h2>Find School Places</h2>
+                    <div class="title-actions">
+                        <button id="helpBtn" class="action-icon-btn help-icon" title="How it works">?</button>
+                        <button id="reportBtn" class="action-icon-btn report-icon" title="Report School">🚩</button>
+                    </div>
+                </div>
+                
+                <div class="search-bar-row">
+                    <input type="text" id="addressInput" placeholder="Type street, neighborhood...">
+                    <button id="searchBtn" class="btn btn-search">Search</button>
+                </div>
+
+                <div class="action-buttons-row">
+                    <button id="liveLocationBtn" class="btn btn-live">🎯 Live Location</button>
+                    <button id="saveLocationBtn" class="btn btn-radius">💾 Save</button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <label for="sectorFilter">School Sector:</label>
+                <select id="sectorFilter" class="styled-select">
+                    <option value="all">All Sectors</option>
+                    <option value="public">Public Schools</option>
+                    <option value="private">Private / Independent</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- Center Section: Interactive Map -->
+        <section id="mapContainer" class="map-view-panel mobile-view-panel active-mobile-view">
+            <div id="map"></div>
+        </section>
+
+        <!-- Right Sidebar: Sorted Schools List -->
+        <aside id="sidebarRight" class="sidebar right-sidebar mobile-view-panel">
+            <div class="list-header-row">
+                <h2 class="sidebar-heading">Schools Listed</h2>
+                <span id="schoolsCountBadge" class="count-badge">0 Found</span>
+            </div>
+            <div id="schoolsListContainer" class="cards-scroll-wrapper">
+                <!-- Dynamically Populated Cards Go Here -->
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Global Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="#" id="footerPrivacy">Privacy Policy</a>
+            <a href="#" id="footerTerms">Terms of Service</a>
+            <a href="#" id="footerSafety" class="safety-link">🛡️ Child Safety Notice</a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2026 VacanClass. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile View Switcher Tab Bar -->
+    <nav class="mobile-nav-bar">
+        <button id="tabMap" class="mobile-tab active">🗺️ Map</button>
+        <button id="tabList" class="mobile-tab">📋 Schools (<span id="mobileCount">0</span>)</button>
+        <button id="tabSearch" class="mobile-tab">🔍 Search</button>
+    </nav>
+
+    <!-- Modals Overlay -->
+    <div id="modalOverlay" class="modal-overlay">
+        
+        <!-- Safety & Cookie Disclaimer Modal -->
+        <div id="disclaimerModal" class="modal-card">
+            <div class="modal-header">
+                <h3>🛡️ Terms, Privacy & Safety Notice</h3>
+            </div>
+            <div class="modal-body">
+                <p><b>Welcome to VacanClass.</b> We use local browser cookies to save your search area and language preferences.</p>
+                <div class="safety-warning-box">
+                    <h4>⚠️ Strict Child Protection Notice</h4>
+                    <p>VacanClass operates with zero tolerance for child exploitation. Institutional profiles are government-verified. Unauthorized tracking, harassment, or data scraping is strictly prohibited and logged for law enforcement.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="acceptDisclaimerBtn" class="btn premium-btn full-width">Accept & Continue</button>
+            </div>
+        </div>
+
+        <!-- Fullscreen School Detail Modal -->
+        <div id="schoolDetailModal" class="modal-card large-modal">
+            <button class="modal-close-icon modal-close-btn">&times;</button>
+            <div id="schoolDetailContent"></div>
+        </div>
+
+        <!-- Parent Subscription Info Modal -->
+        <div id="parentPricingModal" class="modal-card large-modal">
+            <button class="modal-close-icon modal-close-btn">&times;</button>
+            <h3 class="modal-title">⭐ VacanClass Parent Premium</h3>
+            <p class="modal-subtitle">Secure your child's future faster. Don't wait on hold—get notified the second a seat opens.</p>
+            
+            <div class="pricing-comparison">
+                <div class="tier-box free-tier">
+                    <h4>Basic Account (Free)</h4>
+                    <ul>
+                        <li>✔️ Map search & distance calculation</li>
+                        <li>✔️ Standard vacancy directory</li>
+                        <li>✔️ View public contact details</li>
+                        <li>❌ Manual checking required</li>
+                    </ul>
+                </div>
+                <div class="tier-box premium-tier">
+                    <h4>Premium Parent (R49 / month)</h4>
+                    <ul>
+                        <li>⚡ <b>Instant Vacancy Alerts:</b> Direct SMS/Email the moment a seat opens.</li>
+                        <li>📍 <b>Proximity Watchlist:</b> Auto-monitor up to 3 addresses 24/7.</li>
+                        <li>🚌 <b>Shuttle Route Tracking:</b> See which schools offer verified transport to your area.</li>
+                        <li>✅ <b>1-Click Apply Portal:</b> Submit and verify applications instantly to beat the queue.</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="btn premium-btn full-width call-to-action-btn">Subscribe to Parent Alerts</button>
+        </div>
+
+        <!-- School Premium Boost Modal -->
+        <div id="schoolPricingModal" class="modal-card large-modal">
+            <button class="modal-close-icon modal-close-btn">&times;</button>
+            <h3 class="modal-title">🏫 VacanClass Institutional Boost</h3>
+            <p class="modal-subtitle">Fill your classrooms efficiently. Stand out to parents actively searching in your district.</p>
+            
+            <div class="pricing-comparison">
+                <div class="tier-box free-tier">
+                    <h4>Standard Listing (Free)</h4>
+                    <ul>
+                        <li>✔️ Basic directory appearance</li>
+                        <li>✔️ Standard map pin</li>
+                        <li>✔️ Manual capacity updates</li>
+                    </ul>
+                </div>
+                <div class="tier-box school-tier">
+                    <h4>Boosted Profile (R499 / month)</h4>
+                    <ul>
+                        <li>👑 <b>Top-of-List Priority:</b> Your school gets pinned to the top of local parent searches.</li>
+                        <li>🎨 <b>Brand Highlight:</b> Upload campus galleries, custom crests, and promotional videos.</li>
+                        <li>🚌 <b>Transport Integration:</b> Map your official shuttle routes to attract parents further away.</li>
+                        <li>📊 <b>Direct Application Portal:</b> Receive verified, digital parent applications straight to your dashboard.</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="btn school-tier-btn full-width call-to-action-btn">Upgrade School Profile</button>
+        </div>
+
+        <!-- Help Modal -->
+        <div id="helpModal" class="modal-card">
+            <button class="modal-close-icon modal-close-btn">&times;</button>
+            <h3>❓ How to use VacanClass</h3>
+            <p style="margin-top: 10px;"><b>1. Search:</b> Enter your home address or use 'Live Location'.</p>
+            <p><b>2. Discover:</b> The map will calculate the exact distance to nearby schools.</p>
+            <p><b>3. Check Capacity:</b> Green tags mean space is available, red means the grade is full.</p>
+            <p><b>4. Connect:</b> Click on any school card to call, email, or apply instantly.</p>
+        </div>
+
+        <!-- Report Modal -->
+        <div id="reportModal" class="modal-card">
+            <button class="modal-close-icon modal-close-btn">&times;</button>
+            <h3>🚩 Report an Issue</h3>
+            <p style="margin-top: 10px; color: var(--muted-text);">Help us keep VacanClass accurate. What is the issue?</p>
+            <select class="styled-select" style="width: 100%; margin: 15px 0;">
+                <option>Information is outdated or incorrect</option>
+                <option>School is closed permanently</option>
+                <option>Inappropriate content or profile</option>
+                <option>Technical map error</option>
+            </select>
+            <button class="btn btn-search full-width" onclick="alert('Report submitted successfully. Our moderation team will review this within 24 hours.'); closeAllModals();">Submit Report</button>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="app.js"></script>
+</body>
+</html>

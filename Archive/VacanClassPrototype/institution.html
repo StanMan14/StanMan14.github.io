@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VacanClass - Institution Management Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link id="appFavicon" rel="icon" type="image/png" href="DayLogo.png">
+</head>
+<body class="light-theme dashboard-body">
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="logo-container">
+            <img id="headerLogoImg" src="DayLogo.png" alt="VacanClass Logo" class="brand-logo-img">
+            <span class="logo-text">VacanClass Hub</span>
+        </div>
+        <div class="header-controls">
+            <!-- Google Translate Widget (Consistent with index.html) -->
+            <div id="google_translate_element" class="translate-box"></div>
+
+            <button id="themeToggle" class="btn theme-toggle-btn" title="Toggle Theme">🌓</button>
+            <a href="index.html" class="btn institution-btn">⬅️ Return to Map</a>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="portal-main-container">
+        
+        <!-- Interactive Portal Auth Card Entry Point -->
+        <div id="authContainer" class="portal-form-card">
+            <div class="auth-tabs">
+                <button id="tabLogin" class="auth-tab active">Institutional Login</button>
+                <button id="tabRegister" class="auth-tab">Register School Account</button>
+            </div>
+            
+            <!-- Login Sub-Form View -->
+            <form id="loginForm" class="auth-form" onsubmit="handlePortalAuth(event)">
+                <div class="form-group">
+                    <label>Official Institutional Email Address:</label>
+                    <input type="email" id="loginEmail" placeholder="principal@school.edu.za" required>
+                </div>
+                <div class="form-group">
+                    <label>Secure Portal Access Password:</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn premium-btn" style="width:100%; padding:12px;">Secure Portal Authentication</button>
+            </form>
+
+            <!-- Registration Sub-Form View with Live Authentication -->
+            <form id="registerForm" class="auth-form hidden" onsubmit="handlePortalAuth(event)">
+                <div class="form-group">
+                    <label>Department of Basic Education EMIS Number:</label>
+                    <input type="text" id="regEmis" placeholder="e.g., 700400123" required>
+                </div>
+                <div class="form-group">
+                    <label>Official Registered School Name:</label>
+                    <input type="text" id="regSchoolName" placeholder="As it appears on DBE Certification" required>
+                </div>
+                <div class="form-group">
+                    <label>Admin Email Account:</label>
+                    <input type="email" id="regEmail" placeholder="admin@school.edu.za" required>
+                </div>
+                <div class="form-group">
+                    <label>Create Portal Password:</label>
+                    <input type="password" id="regPassword" placeholder="Create strong security phrase" required>
+                </div>
+                <button type="submit" class="btn premium-btn" style="width:100%; padding:12px;">Create Compliant Profile Ecosystem</button>
+            </form>
+        </div>
+
+        <!-- Compliance Data Entry Form -->
+        <div id="complianceFormContainer" class="portal-form-card hidden">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                <h2>DBE Compliance Registration Portal</h2>
+                <button id="logoutPortalBtn" class="btn btn-radius" style="background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5;">Sign Out</button>
+            </div>
+            <p class="subtitle">Manage school admissions vacancy registers, capacity metrics, and infrastructure compliance data models.</p>
+            
+            <form id="portalVerificationForm" onsubmit="handleInstitutionalDataSubmission(event)">
+                <div class="form-grid-row">
+                    <div class="form-group" style="flex:1;">
+                        <label>EMIS Registration ID:</label>
+                        <input type="text" id="instEmis" readonly style="background:var(--bg-sidebar); cursor:not-allowed;">
+                    </div>
+                    <div class="form-group" style="flex:2;">
+                        <label>Registered Institution Name:</label>
+                        <input type="text" id="instName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Institution Physical GIS Address:</label>
+                    <input type="text" id="instAddress" required>
+                </div>
+
+                <div class="form-grid-row">
+                    <div class="form-group">
+                        <label>Grade R Vacancies:</label>
+                        <input type="number" id="instGradeR" min="0" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label>Grade 1 Vacancies:</label>
+                        <input type="number" id="instGrade1" min="0" value="10">
+                    </div>
+                    <div class="form-group">
+                        <label>Grade 2 Vacancies:</label>
+                        <input type="number" id="instGrade2" min="0" value="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Capacity & Safety Compliance Audit Log Data:</label>
+                    <textarea id="instNotes" placeholder="Provide facility changes, transport routing updates, or emergency structural notes details here..." style="height:120px; resize:vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="btn premium-btn" style="width:100%; padding:12px;">Save Institutional Audit Configuration</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Global Site Footer (Matches index.html) -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="#" id="footerPrivacy">Privacy Policy</a>
+            <a href="#" id="footerTerms">Terms of Service</a>
+            <a href="#" id="footerSafety" class="safety-link">🛡️ Child Safety Notice</a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2026 VacanClass. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="app.js"></script>
+</body>
+</html>
